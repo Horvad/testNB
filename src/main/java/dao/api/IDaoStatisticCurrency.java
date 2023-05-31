@@ -10,4 +10,6 @@ public interface IDaoStatisticCurrency {
     List<StatisticCurrency> getCurrency(String typeCurrency);
     List<StatisticCurrency> getCurrency(String typeCurrency, LocalDate dateStart, LocalDate dateEnd);
 
+    double getAVGStatistic(String typeCurrency, int month, int year);
+
 }

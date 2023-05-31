@@ -1,5 +1,6 @@
 package servise.fabric;
 
+import controllerrs.fabric.SendControllerSingleton;
 import servise.ServiceSend;
 import servise.api.IServiceSend;
 
@@ -13,7 +14,7 @@ public class ServiceSendSingleton {
         if(instance==null){
             synchronized (ServiceSendSingleton.class){
                 if(instance==null){
-                    instance = new ServiceSend();
+                    instance = new ServiceSend(SendControllerSingleton.getInstance());
                 }
             }
         }

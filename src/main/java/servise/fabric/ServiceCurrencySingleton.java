@@ -1,5 +1,6 @@
 package servise.fabric;
 
+import dao.fabric.DaoCurrencySingleton;
 import servise.ServiceCurrency;
 import servise.api.IServiceCurrency;
 import servise.api.IServiceStatistic;
@@ -14,7 +15,7 @@ public class ServiceCurrencySingleton {
         if(instance==null){
             synchronized (ServiceCurrencySingleton.class){
                 if(instance==null){
-                    instance = new ServiceCurrency();
+                    instance = new ServiceCurrency(DaoCurrencySingleton.getInstance());
                 }
             }
         }

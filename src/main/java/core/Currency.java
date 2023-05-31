@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Currency {
-    private final long Cur_ID;
+    private final int Cur_ID;
     private final long Cur_ParentID;
     private final String Cur_Abbreviation;
     private final String Cur_Name;
@@ -21,7 +21,7 @@ public class Currency {
     private LocalDateTime Cur_DateStart;
     private LocalDateTime Cur_DateEnd;
 
-    public Currency(long cur_ID, long cur_ParentID, String cur_Abbreviation, String cur_Name, String cur_Name_Bel,
+    public Currency(int cur_ID, long cur_ParentID, String cur_Abbreviation, String cur_Name, String cur_Name_Bel,
                     String cur_Name_Eng, String cur_QuotName, String cur_QuotName_Bel, String cur_QuotName_Eng,
                     String cur_NameMulti, String cur_Name_BelMulti, String cur_Name_EngMulti,
                     long cur_Scale, long cur_Periodicity, LocalDateTime cur_DateStart, LocalDateTime cur_DateEnd) {
@@ -43,7 +43,7 @@ public class Currency {
         Cur_DateEnd = cur_DateEnd;
     }
 
-    public long getCur_ID() {
+    public int getCur_ID() {
         return Cur_ID;
     }
 

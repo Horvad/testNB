@@ -7,4 +7,5 @@ import java.util.List;
 public interface IServiceCurrency {
     void save(List<Currency> currencies);
     int getId(String typeCurrency);
+    boolean exist(String type);
 }
