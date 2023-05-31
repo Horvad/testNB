@@ -1,5 +1,7 @@
 package servise.fabric;
 
+import dao.fabric.DaoStatisticSingleton;
+import servise.ServiceSend;
 import servise.ServiceStatistic;
 import servise.api.IServiceStatistic;
 
@@ -13,7 +15,10 @@ public class ServiceStatisticSingleton {
         if(instance==null){
             synchronized (ServiceStatisticSingleton.class){
                 if(instance==null){
-                    instance = new ServiceStatistic();
+                    instance = new ServiceStatistic(
+                            ServiceCurrencySingleton.getInstance(),
+                            ServiceSendSingleton.getInstance(),
+                            DaoStatisticSingleton.getInstance());
                 }
             }
         }
