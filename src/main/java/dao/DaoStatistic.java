@@ -16,8 +16,8 @@ import java.util.List;
 public class DaoStatistic implements IDaoStatisticCurrency {
     private final String SQL_SAVE = "INSERT INTO curr.statistic " +
             "(id, date_curr, abbreviation, scale, name, official_rate) VALUES (?,?,?,?,?,?);";
-    private final String SQL_GET = "SELECT id, date_curr, abbreviation, scale, name, official_rate" +
-            "FROM curr.statistic WHERE id = ?;";
+    private final String SQL_GET = "SELECT id, date_curr, abbreviation, scale, name, official_rate " +
+            "FROM curr.statistic WHERE (id = (?));";
     private final String SQL_GET_DATE = "SELECT id, date_curr, abbreviation, scale, name, official_rate " +
             "FROM curr.statistic " +
             "WHERE ((?,?)OVERLAPS(date_curr,date_curr)) AND id = ? ORDER BY date_curr;";
@@ -54,6 +54,7 @@ public class DaoStatistic implements IDaoStatisticCurrency {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET);
             preparedStatement.setLong(1,typeCurrency);
             ResultSet resultSet = preparedStatement.executeQuery();
+            String sss = "dsaaaaaaa ";
             while (resultSet.next()){
                 long id = resultSet.getLong("id");
                 LocalDateTime date = resultSet.getDate("date_curr").toLocalDate().atStartOfDay();

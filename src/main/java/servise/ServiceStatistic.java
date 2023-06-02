@@ -49,6 +49,9 @@ public class ServiceStatistic implements IServiceStatistic {
     @Override
     public List<StatisticCurrency> getCurrency(String typeCurrency) {
         long idCurrency = serviceCurrency.getId(typeCurrency);
+        if(idCurrency==0){
+            throw new IllegalArgumentException("Не верно введена абривеатиура валюты");
+        }
         return daoStatistic.getCurrency(idCurrency);
     }
 
@@ -62,7 +65,7 @@ public class ServiceStatistic implements IServiceStatistic {
         List<StatisticCurrency> statisticCurrencies = daoStatistic.getCurrency(id,dateStart,dateEnd);
         double avg = 0;
         for(StatisticCurrency statisticCurrency : statisticCurrencies){
-            avg = avg + statisticCurrency.getOfficialRate()/10000;
+            avg = avg + statisticCurrency.getOfficialRate();
         }
         avg = avg/statisticCurrencies.size();
         return avg;
