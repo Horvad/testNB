@@ -7,6 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>testNB</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
     <properties>
