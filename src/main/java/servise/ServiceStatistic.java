@@ -52,7 +52,7 @@ public class ServiceStatistic implements IServiceStatistic {
         if(idCurrency==0){
             throw new IllegalArgumentException("Не верно введена абривеатиура валюты");
         }
-        return daoStatistic.getCurrency(idCurrency);
+         return daoStatistic.getCurrency(idCurrency);
     }
 
     @Override

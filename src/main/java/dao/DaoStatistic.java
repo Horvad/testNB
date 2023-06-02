@@ -54,7 +54,6 @@ public class DaoStatistic implements IDaoStatisticCurrency {
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET);
             preparedStatement.setLong(1,typeCurrency);
             ResultSet resultSet = preparedStatement.executeQuery();
-            String sss = "dsaaaaaaa ";
             while (resultSet.next()){
                 long id = resultSet.getLong("id");
                 LocalDateTime date = resultSet.getDate("date_curr").toLocalDate().atStartOfDay();
