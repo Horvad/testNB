@@ -7,6 +7,7 @@ import servise.api.IServiceStatistic;
 import servise.fabric.ServiceStatisticSingleton;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 //1
+@WebServlet(name = "CurrencyDateServlet", urlPatterns = "/statistic")
 public class CurrencyDateServlet extends HttpServlet {
     private final IServiceStatistic serviceStatistic;
     private final ObjectMapper mapper = new ObjectMapper();

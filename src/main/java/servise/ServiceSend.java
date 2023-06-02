@@ -17,7 +17,7 @@ public class ServiceSend implements IServiceSend {
     }
 
     @Override
-    public List<StatisticCurrency> sendGetDynamics(String idCurrency, LocalDate dateStart, LocalDate dateEnd) {
+    public List<StatisticCurrency> sendGetDynamics(long idCurrency, LocalDate dateStart, LocalDate dateEnd) {
         try {
             return sendController.sendGetDynamics(idCurrency,dateStart,dateEnd);
         } catch (IOException e) {
@@ -27,10 +27,6 @@ public class ServiceSend implements IServiceSend {
 
     @Override
     public List<Currency> getCurrency() {
-        try {
-            return sendController.getCurrency();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return sendController.getCurrency();
     }
 }

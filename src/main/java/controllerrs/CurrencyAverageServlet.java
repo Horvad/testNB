@@ -5,6 +5,7 @@ import servise.api.IServiceStatistic;
 import servise.fabric.ServiceStatisticSingleton;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import java.io.Writer;
 import java.util.Map;
 
 //3
+@WebServlet(name = "CurrencyAverageServlet", urlPatterns = "/avg")
 public class CurrencyAverageServlet extends HttpServlet {
     private final IServiceStatistic serviceStatistic;
     private final ObjectMapper mapper = new ObjectMapper();

@@ -1,9 +1,12 @@
 package servise.fabric;
 
+import dao.fabric.DaoCurrencySingleton;
 import dao.fabric.DaoStatisticSingleton;
 import servise.ServiceSend;
 import servise.ServiceStatistic;
 import servise.api.IServiceStatistic;
+
+import java.beans.PropertyVetoException;
 
 public class ServiceStatisticSingleton {
     private static volatile IServiceStatistic instance;
@@ -18,7 +21,8 @@ public class ServiceStatisticSingleton {
                     instance = new ServiceStatistic(
                             ServiceCurrencySingleton.getInstance(),
                             ServiceSendSingleton.getInstance(),
-                            DaoStatisticSingleton.getInstance());
+                            DaoStatisticSingleton.getInstance()
+                            );
                 }
             }
         }

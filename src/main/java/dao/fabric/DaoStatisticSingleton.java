@@ -3,6 +3,9 @@ package dao.fabric;
 import dao.DaoStatistic;
 import dao.api.IDaoStatisticCurrency;
 import dao.api.IDaoCurrency;
+import dao.ds.fabric.DataSourceSingleton;
+
+import java.beans.PropertyVetoException;
 
 public class DaoStatisticSingleton {
     private static volatile IDaoStatisticCurrency instance;
@@ -14,7 +17,11 @@ public class DaoStatisticSingleton {
         if(instance==null){
             synchronized (DaoStatisticSingleton.class){
                 if(instance==null){
-                    instance = new DaoStatistic();
+                    try {
+                        instance = new DaoStatistic(DataSourceSingleton.getInstance());
+                    } catch (PropertyVetoException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         }

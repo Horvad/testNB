@@ -1,74 +1,86 @@
 package core;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class StatisticCurrency {
-    private int Cur_ID;
-    private LocalDate Date;
-    private String Cur_Abbreviation;
-    private long Cur_Scale;
-    private String Cur_Name;
-    private long Cur_OfficialRate;
+    @JsonSetter("Cur_ID")
+    private long id;
+    @JsonSetter("Date")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDateTime date;
+    @JsonSetter("Cur_Abbreviation")
+    private String abbreviation;//
+    @JsonSetter("Cur_Scale")
+    private long scale;
+    @JsonSetter("Cur_Name")
+    private String name;
+    @JsonSetter("Cur_OfficialRate")
+    private double officialRate;
 
     public StatisticCurrency() {
     }
 
-    public StatisticCurrency(int cur_ID, LocalDate date, String cur_Abbreviation, long cur_Scale, String cur_Name, long cur_OfficialRate) {
-        Cur_ID = cur_ID;
-        Date = date;
-        Cur_Abbreviation = cur_Abbreviation;
-        Cur_Scale = cur_Scale;
-        Cur_Name = cur_Name;
-        Cur_OfficialRate = cur_OfficialRate*10000;
+    public StatisticCurrency(long id, LocalDateTime date, String abbreviation, long scale, String name, double officialRate) {
+        this.id = id;
+        this.date = date;
+        this.abbreviation = abbreviation;
+        this.scale = scale;
+        this.name = name;
+        this.officialRate = officialRate;
     }
 
-    public int getCur_ID() {
-        return Cur_ID;
+    public long getId() {
+        return id;
     }
 
-    public void setCur_ID(int cur_ID) {
-        Cur_ID = cur_ID;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public LocalDate getDate() {
-        return Date;
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public void setDate(LocalDate date) {
-        Date = date;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
-    public String getCur_Abbreviation() {
-        return Cur_Abbreviation;
+    public String getAbbreviation() {
+        return abbreviation;
     }
 
-    public void setCur_Abbreviation(String cur_Abbreviation) {
-        Cur_Abbreviation = cur_Abbreviation;
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
     }
 
-    public long getCur_Scale() {
-        return Cur_Scale;
+    public long getScale() {
+        return scale;
     }
 
-    public void setCur_Scale(long cur_Scale) {
-        Cur_Scale = cur_Scale;
+    public void setScale(long scale) {
+        this.scale = scale;
     }
 
-    public String getCur_Name() {
-        return Cur_Name;
+    public String getName() {
+        return name;
     }
 
-    public void setCur_Name(String cur_Name) {
-        Cur_Name = cur_Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public long getCur_OfficialRate() {
-        return Cur_OfficialRate;
+    public double getOfficialRate() {
+        return officialRate;
     }
 
-    public void setCur_OfficialRate(long cur_OfficialRate) {
-        Cur_OfficialRate = cur_OfficialRate*10000;
+    public void setOfficialRate(double officialRate) {
+        this.officialRate = officialRate;
     }
 
     @Override
@@ -76,23 +88,23 @@ public class StatisticCurrency {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StatisticCurrency that = (StatisticCurrency) o;
-        return Cur_ID == that.Cur_ID && Cur_Scale == that.Cur_Scale && Cur_OfficialRate == that.Cur_OfficialRate && Objects.equals(Date, that.Date) && Objects.equals(Cur_Abbreviation, that.Cur_Abbreviation) && Objects.equals(Cur_Name, that.Cur_Name);
+        return id == that.id && scale == that.scale && Double.compare(that.officialRate, officialRate) == 0 && Objects.equals(date, that.date) && Objects.equals(abbreviation, that.abbreviation) && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Cur_ID, Date, Cur_Abbreviation, Cur_Scale, Cur_Name, Cur_OfficialRate);
+        return Objects.hash(id, date, abbreviation, scale, name, officialRate);
     }
 
     @Override
     public String toString() {
         return "StatisticCurrency{" +
-                "Cur_ID=" + Cur_ID +
-                ", Date=" + Date +
-                ", Cur_Abbreviation='" + Cur_Abbreviation + '\'' +
-                ", Cur_Scale=" + Cur_Scale +
-                ", Cur_Name='" + Cur_Name + '\'' +
-                ", Cur_OfficialRate=" + Cur_OfficialRate +
+                "id=" + id +
+                ", date=" + date +
+                ", abbreviation='" + abbreviation + '\'' +
+                ", scale=" + scale +
+                ", name='" + name + '\'' +
+                ", officialRate=" + officialRate +
                 '}';
     }
 }

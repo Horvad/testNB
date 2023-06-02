@@ -14,7 +14,7 @@ public class DataSourceC3P0 implements IDataSourceWrapper {
         this.ds = new ComboPooledDataSource();
         this.ds = new ComboPooledDataSource();
         this.ds.setDriverClass("org.postgresql.Driver");
-        this.ds.setJdbcUrl("jdbc:postgresql://localhost:5432/currency");
+        this.ds.setJdbcUrl("jdbc:postgresql://localhost:5432/curr");
         this.ds.setUser("postgres");
         this.ds.setPassword("postgres");
     }

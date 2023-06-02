@@ -1,118 +1,208 @@
 package core;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Currency {
-    private final int Cur_ID;
-    private final long Cur_ParentID;
-    private final String Cur_Abbreviation;
-    private final String Cur_Name;
-    private final String Cur_Name_Bel;
-    private final String Cur_Name_Eng;
-    private final String Cur_QuotName;
-    private final String Cur_QuotName_Bel;
-    private final String Cur_QuotName_Eng;
-    private final String Cur_NameMulti;
-    private final String Cur_Name_BelMulti;
-    private final String Cur_Name_EngMulti;
-    private final long Cur_Scale;
-    private final long Cur_Periodicity;
-    private LocalDateTime Cur_DateStart;
-    private LocalDateTime Cur_DateEnd;
+    @JsonSetter("Cur_ID")
+    private long id;
+    @JsonSetter("Cur_ParentID")
+    private long parentId;
+    @JsonSetter("Cur_Code")
+    private long code;
+    @JsonSetter("Cur_Abbreviation")
+    private String abbreviation;
+    @JsonSetter("Cur_Name")
+    private String name;
+    @JsonSetter("Cur_Name_Bel")
+    private String nameBel;
+    @JsonSetter("Cur_Name_Eng")
+    private String nameEng;
+    @JsonSetter("Cur_QuotName")
+    private String quotName;
+    @JsonSetter("Cur_QuotName_Bel")
+    private String quotNameBel;
+    @JsonSetter("Cur_QuotName_Eng")
+    private String quotNameEng;
+    @JsonSetter("Cur_NameMulti")
+    private String nameMulti;
+    @JsonSetter("Cur_Name_BelMulti")
+    private String nameBelMulti;
+    @JsonSetter("Cur_Name_EngMulti")
+    private String nameEngMulti;
+    @JsonSetter("Cur_Scale")
+    private long scale;
+    @JsonSetter("Cur_Periodicity")
+    private long periodicity;
+    @JsonSetter("Cur_DateStart")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    private LocalDateTime dateStart;
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSetter("Cur_DateEnd")
+    private LocalDateTime dateEnd;//Cur_DateEnd
 
-    public Currency(int cur_ID, long cur_ParentID, String cur_Abbreviation, String cur_Name, String cur_Name_Bel,
-                    String cur_Name_Eng, String cur_QuotName, String cur_QuotName_Bel, String cur_QuotName_Eng,
-                    String cur_NameMulti, String cur_Name_BelMulti, String cur_Name_EngMulti,
-                    long cur_Scale, long cur_Periodicity, LocalDateTime cur_DateStart, LocalDateTime cur_DateEnd) {
-        Cur_ID = cur_ID;
-        Cur_ParentID = cur_ParentID;
-        Cur_Abbreviation = cur_Abbreviation;
-        Cur_Name = cur_Name;
-        Cur_Name_Bel = cur_Name_Bel;
-        Cur_Name_Eng = cur_Name_Eng;
-        Cur_QuotName = cur_QuotName;
-        Cur_QuotName_Bel = cur_QuotName_Bel;
-        Cur_QuotName_Eng = cur_QuotName_Eng;
-        Cur_NameMulti = cur_NameMulti;
-        Cur_Name_BelMulti = cur_Name_BelMulti;
-        Cur_Name_EngMulti = cur_Name_EngMulti;
-        Cur_Scale = cur_Scale;
-        Cur_Periodicity = cur_Periodicity;
-        Cur_DateStart = cur_DateStart;
-        Cur_DateEnd = cur_DateEnd;
+    public Currency() {
     }
 
-    public int getCur_ID() {
-        return Cur_ID;
+    public Currency(long id, long parentId, long code, String abbreviation, String name, String nameBel, String nameEng, String quotName, String quotNameBel, String quotNameEng, String nameMulti, String nameBelMulti, String nameEngMulti, long scale, long periodicity, LocalDateTime dateStart, LocalDateTime dateEnd) {
+        this.id = id;
+        this.parentId = parentId;
+        this.code = code;
+        this.abbreviation = abbreviation;
+        this.name = name;
+        this.nameBel = nameBel;
+        this.nameEng = nameEng;
+        this.quotName = quotName;
+        this.quotNameBel = quotNameBel;
+        this.quotNameEng = quotNameEng;
+        this.nameMulti = nameMulti;
+        this.nameBelMulti = nameBelMulti;
+        this.nameEngMulti = nameEngMulti;
+        this.scale = scale;
+        this.periodicity = periodicity;
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
     }
 
-    public long getCur_ParentID() {
-        return Cur_ParentID;
+    public long getId() {
+        return id;
     }
 
-    public String getCur_Abbreviation() {
-        return Cur_Abbreviation;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getCur_Name() {
-        return Cur_Name;
+    public long getParentId() {
+        return parentId;
     }
 
-    public String getCur_Name_Bel() {
-        return Cur_Name_Bel;
+    public void setParentId(long parentId) {
+        this.parentId = parentId;
     }
 
-    public String getCur_Name_Eng() {
-        return Cur_Name_Eng;
+    public long getCode() {
+        return code;
     }
 
-    public String getCur_QuotName() {
-        return Cur_QuotName;
+    public void setCode(long code) {
+        this.code = code;
     }
 
-    public String getCur_QuotName_Bel() {
-        return Cur_QuotName_Bel;
+    public String getAbbreviation() {
+        return abbreviation;
     }
 
-    public String getCur_QuotName_Eng() {
-        return Cur_QuotName_Eng;
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
     }
 
-    public String getCur_NameMulti() {
-        return Cur_NameMulti;
+    public String getName() {
+        return name;
     }
 
-    public String getCur_Name_BelMulti() {
-        return Cur_Name_BelMulti;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCur_Name_EngMulti() {
-        return Cur_Name_EngMulti;
+    public String getNameBel() {
+        return nameBel;
     }
 
-    public long getCur_Scale() {
-        return Cur_Scale;
+    public void setNameBel(String nameBel) {
+        this.nameBel = nameBel;
     }
 
-    public long getCur_Periodicity() {
-        return Cur_Periodicity;
+    public String getNameEng() {
+        return nameEng;
     }
 
-    public LocalDateTime getCur_DateStart() {
-        return Cur_DateStart;
+    public void setNameEng(String nameEng) {
+        this.nameEng = nameEng;
     }
 
-    public void setCur_DateStart(LocalDateTime cur_DateStart) {
-        Cur_DateStart = cur_DateStart;
+    public String getQuotName() {
+        return quotName;
     }
 
-    public LocalDateTime getCur_DateEnd() {
-        return Cur_DateEnd;
+    public void setQuotName(String quotName) {
+        this.quotName = quotName;
     }
 
-    public void setCur_DateEnd(LocalDateTime cur_DateEnd) {
-        Cur_DateEnd = cur_DateEnd;
+    public String getQuotNameBel() {
+        return quotNameBel;
+    }
+
+    public void setQuotNameBel(String quotNameBel) {
+        this.quotNameBel = quotNameBel;
+    }
+
+    public String getQuotNameEng() {
+        return quotNameEng;
+    }
+
+    public void setQuotNameEng(String quotNameEng) {
+        this.quotNameEng = quotNameEng;
+    }
+
+    public String getNameMulti() {
+        return nameMulti;
+    }
+
+    public void setNameMulti(String nameMulti) {
+        this.nameMulti = nameMulti;
+    }
+
+    public String getNameBelMulti() {
+        return nameBelMulti;
+    }
+
+    public void setNameBelMulti(String nameBelMulti) {
+        this.nameBelMulti = nameBelMulti;
+    }
+
+    public String getNameEngMulti() {
+        return nameEngMulti;
+    }
+
+    public void setNameEngMulti(String nameEngMulti) {
+        this.nameEngMulti = nameEngMulti;
+    }
+
+    public long getScale() {
+        return scale;
+    }
+
+    public void setScale(long scale) {
+        this.scale = scale;
+    }
+
+    public long getPeriodicity() {
+        return periodicity;
+    }
+
+    public void setPeriodicity(long periodicity) {
+        this.periodicity = periodicity;
+    }
+
+    public LocalDateTime getDateStart() {
+        return dateStart;
+    }
+
+    public void setDateStart(LocalDateTime dateStart) {
+        this.dateStart = dateStart;
+    }
+
+    public LocalDateTime getDateEnd() {
+        return dateEnd;
+    }
+
+    public void setDateEnd(LocalDateTime dateEnd) {
+        this.dateEnd = dateEnd;
     }
 
     @Override
@@ -120,34 +210,34 @@ public class Currency {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Currency currency = (Currency) o;
-        return Cur_ID == currency.Cur_ID && Cur_ParentID == currency.Cur_ParentID && Cur_Scale == currency.Cur_Scale && Cur_Periodicity == currency.Cur_Periodicity && Objects.equals(Cur_Abbreviation, currency.Cur_Abbreviation) && Objects.equals(Cur_Name, currency.Cur_Name) && Objects.equals(Cur_Name_Bel, currency.Cur_Name_Bel) && Objects.equals(Cur_Name_Eng, currency.Cur_Name_Eng) && Objects.equals(Cur_QuotName, currency.Cur_QuotName) && Objects.equals(Cur_QuotName_Bel, currency.Cur_QuotName_Bel) && Objects.equals(Cur_QuotName_Eng, currency.Cur_QuotName_Eng) && Objects.equals(Cur_NameMulti, currency.Cur_NameMulti) && Objects.equals(Cur_Name_BelMulti, currency.Cur_Name_BelMulti) && Objects.equals(Cur_Name_EngMulti, currency.Cur_Name_EngMulti) && Objects.equals(Cur_DateStart, currency.Cur_DateStart) && Objects.equals(Cur_DateEnd, currency.Cur_DateEnd);
+        return id == currency.id && parentId == currency.parentId && code == currency.code && scale == currency.scale && periodicity == currency.periodicity && Objects.equals(abbreviation, currency.abbreviation) && Objects.equals(name, currency.name) && Objects.equals(nameBel, currency.nameBel) && Objects.equals(nameEng, currency.nameEng) && Objects.equals(quotName, currency.quotName) && Objects.equals(quotNameBel, currency.quotNameBel) && Objects.equals(quotNameEng, currency.quotNameEng) && Objects.equals(nameMulti, currency.nameMulti) && Objects.equals(nameBelMulti, currency.nameBelMulti) && Objects.equals(nameEngMulti, currency.nameEngMulti) && Objects.equals(dateStart, currency.dateStart) && Objects.equals(dateEnd, currency.dateEnd);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Cur_ID, Cur_ParentID, Cur_Abbreviation, Cur_Name, Cur_Name_Bel, Cur_Name_Eng, Cur_QuotName, Cur_QuotName_Bel, Cur_QuotName_Eng, Cur_NameMulti, Cur_Name_BelMulti, Cur_Name_EngMulti, Cur_Scale, Cur_Periodicity, Cur_DateStart, Cur_DateEnd);
+        return Objects.hash(id, parentId, code, abbreviation, name, nameBel, nameEng, quotName, quotNameBel, quotNameEng, nameMulti, nameBelMulti, nameEngMulti, scale, periodicity, dateStart, dateEnd);
     }
 
     @Override
     public String toString() {
         return "Currency{" +
-                "Cur_ID=" + Cur_ID +
-                ", Cur_ParentID=" + Cur_ParentID +
-                ", Cur_Abbreviation='" + Cur_Abbreviation + '\'' +
-                ", Cur_Name='" + Cur_Name + '\'' +
-                ", Cur_Name_Bel='" + Cur_Name_Bel + '\'' +
-                ", Cur_Name_Eng='" + Cur_Name_Eng + '\'' +
-                ", Cur_QuotName='" + Cur_QuotName + '\'' +
-                ", Cur_QuotName_Bel='" + Cur_QuotName_Bel + '\'' +
-                ", Cur_QuotName_Eng='" + Cur_QuotName_Eng + '\'' +
-                ", Cur_NameMulti='" + Cur_NameMulti + '\'' +
-                ", Cur_Name_BelMulti='" + Cur_Name_BelMulti + '\'' +
-                ", Cur_Name_EngMulti='" + Cur_Name_EngMulti + '\'' +
-                ", Cur_Scale=" + Cur_Scale +
-                ", Cur_Periodicity=" + Cur_Periodicity +
-                ", Cur_DateStart=" + Cur_DateStart +
-                ", Cur_DateEnd=" + Cur_DateEnd +
+                "id=" + id +
+                ", parentId=" + parentId +
+                ", code=" + code +
+                ", abbreviation='" + abbreviation + '\'' +
+                ", name='" + name + '\'' +
+                ", nameBel='" + nameBel + '\'' +
+                ", nameEng='" + nameEng + '\'' +
+                ", quotName='" + quotName + '\'' +
+                ", quotNameBel='" + quotNameBel + '\'' +
+                ", quotNameEng='" + quotNameEng + '\'' +
+                ", nameMulti='" + nameMulti + '\'' +
+                ", nameBelMulti='" + nameBelMulti + '\'' +
+                ", nameEngMulti='" + nameEngMulti + '\'' +
+                ", scale=" + scale +
+                ", periodicity=" + periodicity +
+                ", dateStart=" + dateStart +
+                ", dateEnd=" + dateEnd +
                 '}';
     }
-
 }
